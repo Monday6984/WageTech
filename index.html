@@ -930,11 +930,8 @@
                   </div>
                   <span class="hint"
                     >If yes, please email your proposal to
-                    <a
-                      href="/cdn-cgi/l/email-protection"
-                      class="__cf_email__"
-                      data-cfemail="630a0d050c23140204061706000b4d0205110a0002"
-                      >[email&#160;protected]</a
+                    <a href="mailto:info@wagetech.africa"
+                      >info@wagetech.africa</a
                     >
                     with subject "Partner Proposal"</span
                   >
@@ -1423,13 +1420,130 @@
             .forEach((o) => closeModal(o.id));
       });
 
-      /* ── Form submission → mailto ── */
-      function handleSubmit(event, type) {
+      // /* ── Form submission → mailto ── */
+      // function handleSubmit(event, type) {
+      //   event.preventDefault();
+      //   const form = event.target;
+      //   const data = new FormData(form);
+
+      //   /* collect multi-checkboxes */
+      //   const groups = {};
+      //   form
+      //     .querySelectorAll('input[type="checkbox"]:not([name^="consent"])')
+      //     .forEach((cb) => {
+      //       if (cb.checked) {
+      //         if (!groups[cb.name]) groups[cb.name] = [];
+      //         groups[cb.name].push(cb.value);
+      //       }
+      //     });
+
+      //   let subject, body;
+
+      //   if (type === "partner") {
+      //     subject = `WageTech Partner Application — ${data.get("org_name") || "New Applicant"}`;
+      //     body = [
+      //       "WAGETECH PARTNER APPLICATION",
+      //       "Received via website form",
+      //       "═══════════════════════════════",
+      //       "",
+      //       "ORGANIZATION DETAILS",
+      //       `Organization Name: ${data.get("org_name") || "—"}`,
+      //       `Industry: ${data.get("industry") || "—"}`,
+      //       `Organization Size: ${data.get("org_size") || "—"}`,
+      //       `Location: ${data.get("location") || "—"}`,
+      //       `Website / LinkedIn: ${data.get("website") || "—"}`,
+      //       "",
+      //       "CONTACT PERSON",
+      //       `Full Name: ${data.get("contact_name") || "—"}`,
+      //       `Role: ${data.get("contact_role") || "—"}`,
+      //       `Email: ${data.get("contact_email") || "—"}`,
+      //       `Phone: ${data.get("contact_phone") || "—"}`,
+      //       "",
+      //       "PARTNERSHIP TYPE",
+      //       `Types Selected: ${(groups["partner_type"] || []).join(", ") || "—"}`,
+      //       "",
+      //       "COMMITMENT",
+      //       `Roles / Opportunities: ${data.get("num_roles") || "—"}`,
+      //       `Mentees to Support: ${data.get("num_mentees") || "—"}`,
+      //       `Funding Level: ${data.get("funding_level") || "—"}`,
+      //       `Duration: ${data.get("duration") || "—"}`,
+      //       "",
+      //       "ALIGNMENT",
+      //       `Why WageTech: ${data.get("why_wagetech") || "—"}`,
+      //       `Target Groups: ${(groups["target_group"] || []).join(", ") || "—"}`,
+      //       "",
+      //       "ADDITIONAL",
+      //       `How They Heard: ${data.get("heard_from") || "—"}`,
+      //       `Has Proposal: ${data.get("has_proposal") || "—"}`,
+      //       "",
+      //       "Consent given: Yes",
+      //     ].join("\n");
+      //   } else {
+      //     subject = `WageTech Support Application — ${data.get("full_name") || "New Supporter"}`;
+      //     body = [
+      //       "WAGETECH SUPPORTER APPLICATION",
+      //       "Received via website form",
+      //       "═══════════════════════════════",
+      //       "",
+      //       "PERSONAL INFORMATION",
+      //       `Full Name: ${data.get("full_name") || "—"}`,
+      //       `Email: ${data.get("email") || "—"}`,
+      //       `Phone: ${data.get("phone") || "—"}`,
+      //       `Country: ${data.get("country") || "—"}`,
+      //       "",
+      //       "SUPPORT TYPE",
+      //       `How they want to support: ${(groups["support_type"] || []).join(", ") || "—"}`,
+      //       "",
+      //       "CONTRIBUTION",
+      //       `Amount: ${data.get("amount") || "—"}`,
+      //       `Frequency: ${data.get("frequency") || "—"}`,
+      //       `Payment Method: ${data.get("payment_method") || "—"}`,
+      //       "",
+      //       "AREAS OF INTEREST",
+      //       `${(groups["interest_area"] || []).join(", ") || "—"}`,
+      //       "",
+      //       "MESSAGE",
+      //       `Why supporting WageTech: ${data.get("message") || "—"}`,
+      //       "",
+      //       "ENGAGEMENT",
+      //       `Receive Updates: ${data.get("receive_updates") || "—"}`,
+      //       `Join Community: ${data.get("join_community") || "—"}`,
+      //       "",
+      //       "Consent to contact: Yes",
+      //       "Consent to data use: Yes",
+      //     ].join("\n");
+      //   }
+
+      //   window.location.href = `mailto:info@wagetech.africa?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+
+      //   setTimeout(() => {
+      //     form.style.display = "none";
+      //     const successEl = document.getElementById(
+      //       type === "partner" ? "partner-success" : "supporter-success",
+      //     );
+      //     if (successEl) successEl.style.display = "flex";
+      //   }, 600);
+      // }
+
+      /* ────────────────────────────────────────────
+     FORMSPREE ENDPOINTS
+     1. Go to https://formspree.io and sign up free
+     2. Create two forms, copy each endpoint URL
+     3. Paste them below replacing the placeholder text
+  ──────────────────────────────────────────── */
+      const FORMSPREE_PARTNER = "https://formspree.io/f/xeepblrg";
+      const FORMSPREE_SUPPORTER = "https://formspree.io/f/xqegvdwk";
+
+      /* ── Form submission → Formspree ── */
+      async function handleSubmit(event, type) {
         event.preventDefault();
         const form = event.target;
         const data = new FormData(form);
+        const submitBtn = form.querySelector(".btn-submit");
+        const endpoint =
+          type === "partner" ? FORMSPREE_PARTNER : FORMSPREE_SUPPORTER;
 
-        /* collect multi-checkboxes */
+        /* Collect multi-select checkboxes into readable strings */
         const groups = {};
         form
           .querySelectorAll('input[type="checkbox"]:not([name^="consent"])')
@@ -1440,92 +1554,59 @@
             }
           });
 
-        let subject, body;
+        /* Flatten checkbox groups back into FormData so Formspree receives them cleanly */
+        Object.entries(groups).forEach(([key, vals]) => {
+          data.set(key, vals.join(", "));
+        });
 
+        /* Add a human-readable subject line for the email Formspree sends */
         if (type === "partner") {
-          subject = `WageTech Partner Application — ${data.get("org_name") || "New Applicant"}`;
-          body = [
-            "WAGETECH PARTNER APPLICATION",
-            "Received via website form",
-            "═══════════════════════════════",
-            "",
-            "ORGANIZATION DETAILS",
-            `Organization Name: ${data.get("org_name") || "—"}`,
-            `Industry: ${data.get("industry") || "—"}`,
-            `Organization Size: ${data.get("org_size") || "—"}`,
-            `Location: ${data.get("location") || "—"}`,
-            `Website / LinkedIn: ${data.get("website") || "—"}`,
-            "",
-            "CONTACT PERSON",
-            `Full Name: ${data.get("contact_name") || "—"}`,
-            `Role: ${data.get("contact_role") || "—"}`,
-            `Email: ${data.get("contact_email") || "—"}`,
-            `Phone: ${data.get("contact_phone") || "—"}`,
-            "",
-            "PARTNERSHIP TYPE",
-            `Types Selected: ${(groups["partner_type"] || []).join(", ") || "—"}`,
-            "",
-            "COMMITMENT",
-            `Roles / Opportunities: ${data.get("num_roles") || "—"}`,
-            `Mentees to Support: ${data.get("num_mentees") || "—"}`,
-            `Funding Level: ${data.get("funding_level") || "—"}`,
-            `Duration: ${data.get("duration") || "—"}`,
-            "",
-            "ALIGNMENT",
-            `Why WageTech: ${data.get("why_wagetech") || "—"}`,
-            `Target Groups: ${(groups["target_group"] || []).join(", ") || "—"}`,
-            "",
-            "ADDITIONAL",
-            `How They Heard: ${data.get("heard_from") || "—"}`,
-            `Has Proposal: ${data.get("has_proposal") || "—"}`,
-            "",
-            "Consent given: Yes",
-          ].join("\n");
+          data.set(
+            "_subject",
+            `WageTech Partner Application — ${data.get("org_name") || "New Applicant"}`,
+          );
         } else {
-          subject = `WageTech Support Application — ${data.get("full_name") || "New Supporter"}`;
-          body = [
-            "WAGETECH SUPPORTER APPLICATION",
-            "Received via website form",
-            "═══════════════════════════════",
-            "",
-            "PERSONAL INFORMATION",
-            `Full Name: ${data.get("full_name") || "—"}`,
-            `Email: ${data.get("email") || "—"}`,
-            `Phone: ${data.get("phone") || "—"}`,
-            `Country: ${data.get("country") || "—"}`,
-            "",
-            "SUPPORT TYPE",
-            `How they want to support: ${(groups["support_type"] || []).join(", ") || "—"}`,
-            "",
-            "CONTRIBUTION",
-            `Amount: ${data.get("amount") || "—"}`,
-            `Frequency: ${data.get("frequency") || "—"}`,
-            `Payment Method: ${data.get("payment_method") || "—"}`,
-            "",
-            "AREAS OF INTEREST",
-            `${(groups["interest_area"] || []).join(", ") || "—"}`,
-            "",
-            "MESSAGE",
-            `Why supporting WageTech: ${data.get("message") || "—"}`,
-            "",
-            "ENGAGEMENT",
-            `Receive Updates: ${data.get("receive_updates") || "—"}`,
-            `Join Community: ${data.get("join_community") || "—"}`,
-            "",
-            "Consent to contact: Yes",
-            "Consent to data use: Yes",
-          ].join("\n");
+          data.set(
+            "_subject",
+            `WageTech Support Application — ${data.get("full_name") || "New Supporter"}`,
+          );
         }
 
-        window.location.href = `mailto:info@wagetech.africa?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+        /* Disable button and show loading state */
+        const originalText = submitBtn.textContent;
+        submitBtn.textContent = "Sending…";
+        submitBtn.disabled = true;
 
-        setTimeout(() => {
-          form.style.display = "none";
-          const successEl = document.getElementById(
-            type === "partner" ? "partner-success" : "supporter-success",
+        try {
+          const response = await fetch(endpoint, {
+            method: "POST",
+            body: data,
+            headers: { Accept: "application/json" },
+          });
+
+          if (response.ok) {
+            /* Show success screen */
+            form.style.display = "none";
+            const successId =
+              type === "partner" ? "partner-success" : "supporter-success";
+            const successEl = document.getElementById(successId);
+            if (successEl) successEl.style.display = "flex";
+          } else {
+            const json = await response.json().catch(() => ({}));
+            const msg =
+              (json.errors || []).map((e) => e.message).join(", ") ||
+              "Something went wrong. Please try again.";
+            alert(msg);
+            submitBtn.textContent = originalText;
+            submitBtn.disabled = false;
+          }
+        } catch (err) {
+          alert(
+            "Network error. Please check your connection and try again, or email us directly at info@wagetech.africa",
           );
-          if (successEl) successEl.style.display = "flex";
-        }, 600);
+          submitBtn.textContent = originalText;
+          submitBtn.disabled = false;
+        }
       }
     </script>
   </body>
