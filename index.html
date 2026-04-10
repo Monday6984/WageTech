@@ -474,7 +474,7 @@
               Provide jobs, mentorship, or funding. Help us create a real
               pipeline from training to employment across Nigeria.
             </p>
-            <a href="mailto:info@wagetech.org" class="btn-outline"
+            <a href="#" onclick="openModal('partner-modal')" class="btn-outline"
               >Build The Future With Us</a
             >
           </div>
@@ -493,7 +493,10 @@
               Help empower the next generation of women in tech through
               donations, sponsorships, and advocacy.
             </p>
-            <a href="mailto:info@wagetech.org" class="btn-electric"
+            <a
+              href="#"
+              onclick="openModal('supporter-modal')"
+              class="btn-electric"
               >Donate / Sponsor</a
             >
           </div>
@@ -563,6 +566,802 @@
       </div>
     </footer>
 
+    <!-- ═══════════════════════════════════════
+     PARTNER FORM MODAL
+═══════════════════════════════════════ -->
+    <div
+      class="modal-overlay"
+      id="partner-modal"
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="partner-title"
+    >
+      <div class="modal">
+        <div class="modal-header">
+          <button
+            class="modal-close"
+            onclick="closeModal('partner-modal')"
+            aria-label="Close"
+          >
+            ✕
+          </button>
+          <div class="eyebrow">Partnership Application</div>
+          <h2 id="partner-title">Build the Future With Us</h2>
+          <p>
+            For organizations, companies, and collaborators ready to create real
+            opportunities for Nigerian women in tech.
+          </p>
+        </div>
+
+        <div class="modal-body">
+          <form id="partner-form" onsubmit="handleSubmit(event, 'partner')">
+            <!-- ORGANISATION DETAILS -->
+            <div class="form-section">
+              <div class="form-section-title">🏢 Organization Details</div>
+              <div class="form-row">
+                <div class="form-group">
+                  <label>Organization Name <span class="req">*</span></label>
+                  <input
+                    type="text"
+                    name="org_name"
+                    placeholder="e.g. Acme Technologies Ltd"
+                    required
+                  />
+                </div>
+                <div class="form-group">
+                  <label>Industry <span class="req">*</span></label>
+                  <select name="industry" required>
+                    <option value="" disabled selected>Select industry</option>
+                    <option>Technology / Software</option>
+                    <option>Finance / Fintech</option>
+                    <option>Telecommunications</option>
+                    <option>Education / EdTech</option>
+                    <option>Healthcare / HealthTech</option>
+                    <option>E-Commerce / Retail</option>
+                    <option>Media / Creative</option>
+                    <option>Government / Public Sector</option>
+                    <option>NGO / Non-profit</option>
+                    <option>Consulting / Professional Services</option>
+                    <option>Other</option>
+                  </select>
+                </div>
+              </div>
+              <div class="form-row">
+                <div class="form-group">
+                  <label>Organization Size <span class="req">*</span></label>
+                  <select name="org_size" required>
+                    <option value="" disabled selected>Select size</option>
+                    <option>1–10 (Startup)</option>
+                    <option>11–50 (Small)</option>
+                    <option>51–200 (Medium)</option>
+                    <option>201–1000 (Large)</option>
+                    <option>1000+ (Enterprise)</option>
+                  </select>
+                </div>
+                <div class="form-group">
+                  <label>Location <span class="req">*</span></label>
+                  <input
+                    type="text"
+                    name="location"
+                    placeholder="e.g. Lagos, Nigeria"
+                    required
+                  />
+                </div>
+              </div>
+              <div class="form-group">
+                <label>Website or LinkedIn URL</label>
+                <input type="url" name="website" placeholder="https://" />
+                <span class="hint"
+                  >Your organization's website or LinkedIn company page</span
+                >
+              </div>
+            </div>
+
+            <!-- CONTACT PERSON -->
+            <div class="form-section">
+              <div class="form-section-title">👤 Contact Person</div>
+              <div class="form-row">
+                <div class="form-group">
+                  <label>Full Name <span class="req">*</span></label>
+                  <input
+                    type="text"
+                    name="contact_name"
+                    placeholder="First and last name"
+                    required
+                  />
+                </div>
+                <div class="form-group">
+                  <label>Role / Job Title <span class="req">*</span></label>
+                  <input
+                    type="text"
+                    name="contact_role"
+                    placeholder="e.g. Head of HR"
+                    required
+                  />
+                </div>
+              </div>
+              <div class="form-row">
+                <div class="form-group">
+                  <label>Email Address <span class="req">*</span></label>
+                  <input
+                    type="email"
+                    name="contact_email"
+                    placeholder="you@organization.com"
+                    required
+                  />
+                </div>
+                <div class="form-group">
+                  <label>Phone Number <span class="req">*</span></label>
+                  <input
+                    type="tel"
+                    name="contact_phone"
+                    placeholder="+234 800 000 0000"
+                    required
+                  />
+                </div>
+              </div>
+            </div>
+
+            <!-- PARTNERSHIP TYPE -->
+            <div class="form-section">
+              <div class="form-section-title">🤝 Partnership Type</div>
+              <div class="form-group">
+                <label
+                  >What type of partnership are you interested in?
+                  <span class="req">*</span></label
+                >
+                <span class="hint">Select all that apply</span>
+                <div class="checkbox-group" style="margin-top: 0.6rem">
+                  <label class="checkbox-item"
+                    ><input
+                      type="checkbox"
+                      name="partner_type"
+                      value="Jobs"
+                    /><span>Jobs — Full-time or contract roles</span></label
+                  >
+                  <label class="checkbox-item"
+                    ><input
+                      type="checkbox"
+                      name="partner_type"
+                      value="Internships"
+                    /><span
+                      >Internships — Structured learning placements</span
+                    ></label
+                  >
+                  <label class="checkbox-item"
+                    ><input
+                      type="checkbox"
+                      name="partner_type"
+                      value="Mentorship"
+                    /><span>Mentorship — 1-on-1 or group guidance</span></label
+                  >
+                  <label class="checkbox-item"
+                    ><input
+                      type="checkbox"
+                      name="partner_type"
+                      value="Funding"
+                    /><span
+                      >Funding — Financial support for the program</span
+                    ></label
+                  >
+                  <label class="checkbox-item"
+                    ><input
+                      type="checkbox"
+                      name="partner_type"
+                      value="Training Collaboration"
+                    /><span
+                      >Training Collaboration — Co-design curriculum or
+                      workshops</span
+                    ></label
+                  >
+                  <label class="checkbox-item"
+                    ><input
+                      type="checkbox"
+                      name="partner_type"
+                      value="Tools/Software Support"
+                    /><span
+                      >Tools / Software Support — Licenses or platforms</span
+                    ></label
+                  >
+                  <label class="checkbox-item"
+                    ><input
+                      type="checkbox"
+                      name="partner_type"
+                      value="Accessibility Support"
+                    /><span
+                      >Accessibility Support — Devices, data, or physical
+                      access</span
+                    ></label
+                  >
+                </div>
+              </div>
+            </div>
+
+            <!-- COMMITMENT -->
+            <div class="form-section">
+              <div class="form-section-title">📋 Commitment</div>
+              <div class="form-row">
+                <div class="form-group">
+                  <label>Number of roles / opportunities</label>
+                  <input
+                    type="number"
+                    name="num_roles"
+                    placeholder="e.g. 10"
+                    min="0"
+                  />
+                </div>
+                <div class="form-group">
+                  <label>Number of mentees you can support</label>
+                  <input
+                    type="number"
+                    name="num_mentees"
+                    placeholder="e.g. 5"
+                    min="0"
+                  />
+                </div>
+              </div>
+              <div class="form-row">
+                <div class="form-group">
+                  <label>Funding commitment level</label>
+                  <select name="funding_level">
+                    <option value="" disabled selected>
+                      Select range (optional)
+                    </option>
+                    <option>Under ₦500,000</option>
+                    <option>₦500,000 – ₦2M</option>
+                    <option>₦2M – ₦10M</option>
+                    <option>₦10M – ₦50M</option>
+                    <option>Above ₦50M</option>
+                    <option>Prefer not to say</option>
+                  </select>
+                </div>
+                <div class="form-group">
+                  <label>Duration of support</label>
+                  <select name="duration">
+                    <option value="" disabled selected>Select duration</option>
+                    <option>One-time / Project-based</option>
+                    <option>3 months</option>
+                    <option>6 months</option>
+                    <option>1 year</option>
+                    <option>Ongoing / Long-term</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+
+            <!-- ALIGNMENT -->
+            <div class="form-section">
+              <div class="form-section-title">🎯 Alignment</div>
+              <div class="form-group">
+                <label
+                  >Why do you want to build with WageTech?
+                  <span class="req">*</span></label
+                >
+                <textarea
+                  name="why_wagetech"
+                  placeholder="Share your motivation and how this aligns with your organization's goals..."
+                  required
+                ></textarea>
+              </div>
+              <div class="form-group">
+                <label>Which group do you primarily want to support?</label>
+                <div class="checkbox-group" style="margin-top: 0.4rem">
+                  <label class="checkbox-item"
+                    ><input
+                      type="checkbox"
+                      name="target_group"
+                      value="Women from low-income communities"
+                    /><span>Women from low-income communities</span></label
+                  >
+                  <label class="checkbox-item"
+                    ><input
+                      type="checkbox"
+                      name="target_group"
+                      value="Rural and peri-urban women"
+                    /><span>Rural and peri-urban women</span></label
+                  >
+                  <label class="checkbox-item"
+                    ><input
+                      type="checkbox"
+                      name="target_group"
+                      value="Women with disabilities"
+                    /><span>Women with disabilities</span></label
+                  >
+                  <label class="checkbox-item"
+                    ><input
+                      type="checkbox"
+                      name="target_group"
+                      value="Displaced and marginalized women"
+                    /><span>Displaced and marginalized women</span></label
+                  >
+                  <label class="checkbox-item"
+                    ><input
+                      type="checkbox"
+                      name="target_group"
+                      value="Career returnees"
+                    /><span>Career returnees</span></label
+                  >
+                  <label class="checkbox-item"
+                    ><input
+                      type="checkbox"
+                      name="target_group"
+                      value="All groups"
+                    /><span>All groups equally</span></label
+                  >
+                </div>
+              </div>
+            </div>
+
+            <!-- ADDITIONAL -->
+            <div class="form-section">
+              <div class="form-section-title">📎 Additional</div>
+              <div class="form-row">
+                <div class="form-group">
+                  <label>How did you hear about WageTech?</label>
+                  <select name="heard_from">
+                    <option value="" disabled selected>Select source</option>
+                    <option>Social Media (LinkedIn)</option>
+                    <option>Social Media (Instagram)</option>
+                    <option>Social Media (Twitter/X)</option>
+                    <option>Google / Search</option>
+                    <option>Referral / Word of mouth</option>
+                    <option>Event or Conference</option>
+                    <option>Press / Media coverage</option>
+                    <option>Other</option>
+                  </select>
+                </div>
+                <div class="form-group">
+                  <label>Would you like to upload a proposal?</label>
+                  <div class="radio-group" style="margin-top: 0.5rem">
+                    <label class="radio-item"
+                      ><input
+                        type="radio"
+                        name="has_proposal"
+                        value="Yes"
+                      /><span>Yes — I'll email it separately</span></label
+                    >
+                    <label class="radio-item"
+                      ><input
+                        type="radio"
+                        name="has_proposal"
+                        value="No"
+                      /><span>No</span></label
+                    >
+                  </div>
+                  <span class="hint"
+                    >If yes, please email your proposal to
+                    <a
+                      href="/cdn-cgi/l/email-protection"
+                      class="__cf_email__"
+                      data-cfemail="630a0d050c23140204061706000b4d0205110a0002"
+                      >[email&#160;protected]</a
+                    >
+                    with subject "Partner Proposal"</span
+                  >
+                </div>
+              </div>
+            </div>
+
+            <!-- CONSENT -->
+            <div class="form-section">
+              <div class="form-section-title">✅ Consent</div>
+              <div class="form-group">
+                <label
+                  class="checkbox-item"
+                  style="align-items: flex-start; gap: 0.75rem"
+                >
+                  <input
+                    type="checkbox"
+                    name="consent"
+                    required
+                    style="margin-top: 3px"
+                  />
+                  <span
+                    >I agree to collaborate with WageTech to create inclusive
+                    digital opportunities for women and girls in Nigeria. I
+                    understand that submitting this form initiates a partnership
+                    conversation and does not constitute a binding agreement.
+                    <span class="req">*</span></span
+                  >
+                </label>
+              </div>
+            </div>
+
+            <div class="form-footer">
+              <p>
+                Your information will be sent to
+                <strong
+                  ><a href="mailto:info@wagetech.africa"
+                    >info@wagetech.africa</a
+                  ></strong
+                >. A team member will be in touch within 3–5 business days.
+              </p>
+              <button type="submit" class="btn-submit">
+                Submit Application →
+              </button>
+            </div>
+          </form>
+
+          <!-- Success message -->
+          <div class="form-success" id="partner-success">
+            <div class="check-circle">✓</div>
+            <h3>Application Received!</h3>
+            <p>
+              Thank you for your interest in partnering with WageTech. Our team
+              will review your application and reach out within
+              <strong>3–5 business days</strong>.
+            </p>
+            <button
+              class="btn-primary"
+              onclick="closeModal('partner-modal')"
+              style="margin-top: 0.5rem"
+            >
+              Close
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ═══════════════════════════════════════
+     SUPPORTER FORM MODAL
+═══════════════════════════════════════ -->
+    <div
+      class="modal-overlay"
+      id="supporter-modal"
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="supporter-title"
+    >
+      <div class="modal">
+        <div class="modal-header">
+          <button
+            class="modal-close"
+            onclick="closeModal('supporter-modal')"
+            aria-label="Close"
+          >
+            ✕
+          </button>
+          <div class="eyebrow">Support Application</div>
+          <h2 id="supporter-title">Power the Future of Inclusive Tech</h2>
+          <p>
+            For donors, supporters, and advocates who believe every Nigerian
+            woman deserves a place in the digital economy.
+          </p>
+        </div>
+
+        <div class="modal-body">
+          <form id="supporter-form" onsubmit="handleSubmit(event, 'supporter')">
+            <!-- PERSONAL INFO -->
+            <div class="form-section">
+              <div class="form-section-title">👤 Personal Information</div>
+              <div class="form-row">
+                <div class="form-group">
+                  <label>Full Name <span class="req">*</span></label>
+                  <input
+                    type="text"
+                    name="full_name"
+                    placeholder="First and last name"
+                    required
+                  />
+                </div>
+                <div class="form-group">
+                  <label>Email Address <span class="req">*</span></label>
+                  <input
+                    type="email"
+                    name="email"
+                    placeholder="you@email.com"
+                    required
+                  />
+                </div>
+              </div>
+              <div class="form-row">
+                <div class="form-group">
+                  <label>Phone Number</label>
+                  <input
+                    type="tel"
+                    name="phone"
+                    placeholder="+234 800 000 0000"
+                  />
+                </div>
+                <div class="form-group">
+                  <label>Country <span class="req">*</span></label>
+                  <select name="country" required>
+                    <option value="" disabled selected>Select country</option>
+                    <option>Nigeria</option>
+                    <option>Ghana</option>
+                    <option>Kenya</option>
+                    <option>South Africa</option>
+                    <option>United Kingdom</option>
+                    <option>United States</option>
+                    <option>Canada</option>
+                    <option>Germany</option>
+                    <option>Netherlands</option>
+                    <option>Other</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+
+            <!-- SUPPORT TYPE -->
+            <div class="form-section">
+              <div class="form-section-title">💛 Support Type</div>
+              <div class="form-group">
+                <label
+                  >How would you like to support WageTech?
+                  <span class="req">*</span></label
+                >
+                <span class="hint">Select all that apply</span>
+                <div class="checkbox-group" style="margin-top: 0.6rem">
+                  <label class="checkbox-item"
+                    ><input
+                      type="checkbox"
+                      name="support_type"
+                      value="One-time donation"
+                    /><span>One-time donation</span></label
+                  >
+                  <label class="checkbox-item"
+                    ><input
+                      type="checkbox"
+                      name="support_type"
+                      value="Monthly donation"
+                    /><span>Monthly recurring donation</span></label
+                  >
+                  <label class="checkbox-item"
+                    ><input
+                      type="checkbox"
+                      name="support_type"
+                      value="Sponsorship"
+                    /><span
+                      >Sponsorship — Brand or program sponsorship</span
+                    ></label
+                  >
+                  <label class="checkbox-item"
+                    ><input
+                      type="checkbox"
+                      name="support_type"
+                      value="Volunteer"
+                    /><span>Volunteer — Skills, time, or expertise</span></label
+                  >
+                  <label class="checkbox-item"
+                    ><input
+                      type="checkbox"
+                      name="support_type"
+                      value="Advocacy"
+                    /><span>Advocacy — Amplify our work and reach</span></label
+                  >
+                </div>
+              </div>
+            </div>
+
+            <!-- CONTRIBUTION -->
+            <div class="form-section">
+              <div class="form-section-title">💰 Contribution</div>
+              <div class="form-row">
+                <div class="form-group">
+                  <label>How much would you like to contribute?</label>
+                  <select name="amount">
+                    <option value="" disabled selected>Select amount</option>
+                    <option>Under $50 / ₦50,000</option>
+                    <option>$50–$200 / ₦50K–₦200K</option>
+                    <option>$200–$500 / ₦200K–₦500K</option>
+                    <option>$500–$1,000 / ₦500K–₦1M</option>
+                    <option>$1,000–$5,000 / ₦1M–₦5M</option>
+                    <option>Above $5,000 / ₦5M+</option>
+                    <option>Prefer not to say</option>
+                  </select>
+                </div>
+                <div class="form-group">
+                  <label>How often would you like to give?</label>
+                  <select name="frequency">
+                    <option value="" disabled selected>Select frequency</option>
+                    <option>One-time</option>
+                    <option>Monthly</option>
+                    <option>Quarterly</option>
+                    <option>Annually</option>
+                    <option>Not applicable (Volunteer / Advocacy)</option>
+                  </select>
+                </div>
+              </div>
+              <div class="form-group">
+                <label>Preferred payment method</label>
+                <select name="payment_method">
+                  <option value="" disabled selected>Select method</option>
+                  <option>Bank Transfer (Nigeria)</option>
+                  <option>International Wire Transfer</option>
+                  <option>PayPal</option>
+                  <option>Credit / Debit Card</option>
+                  <option>Cryptocurrency</option>
+                  <option>To be discussed</option>
+                </select>
+              </div>
+            </div>
+
+            <!-- INTEREST -->
+            <div class="form-section">
+              <div class="form-section-title">🎯 Areas of Interest</div>
+              <div class="form-group">
+                <label
+                  >What area would you like to support?
+                  <span class="req">*</span></label
+                >
+                <span class="hint">Select all that apply</span>
+                <div class="checkbox-group" style="margin-top: 0.6rem">
+                  <label class="checkbox-item"
+                    ><input
+                      type="checkbox"
+                      name="interest_area"
+                      value="Women in tech"
+                    /><span
+                      >Women in tech — General digital empowerment</span
+                    ></label
+                  >
+                  <label class="checkbox-item"
+                    ><input
+                      type="checkbox"
+                      name="interest_area"
+                      value="Persons with disabilities"
+                    /><span
+                      >Persons with disabilities — Inclusive access</span
+                    ></label
+                  >
+                  <label class="checkbox-item"
+                    ><input
+                      type="checkbox"
+                      name="interest_area"
+                      value="Job placement"
+                    /><span
+                      >Job placement — Connecting trained women to roles</span
+                    ></label
+                  >
+                  <label class="checkbox-item"
+                    ><input
+                      type="checkbox"
+                      name="interest_area"
+                      value="Digital skills training"
+                    /><span
+                      >Digital skills training — Funding curriculum and
+                      trainers</span
+                    ></label
+                  >
+                </div>
+              </div>
+            </div>
+
+            <!-- MESSAGE -->
+            <div class="form-section">
+              <div class="form-section-title">💬 Your Message</div>
+              <div class="form-group">
+                <label
+                  >Why are you supporting WageTech?
+                  <span class="req">*</span></label
+                >
+                <textarea
+                  name="message"
+                  placeholder="Share what motivates you to support women in tech..."
+                  required
+                ></textarea>
+              </div>
+            </div>
+
+            <!-- ENGAGEMENT -->
+            <div class="form-section">
+              <div class="form-section-title">📬 Stay Connected</div>
+              <div class="form-row">
+                <div class="form-group">
+                  <label>Would you like to receive updates?</label>
+                  <div class="radio-group" style="margin-top: 0.5rem">
+                    <label class="radio-item"
+                      ><input
+                        type="radio"
+                        name="receive_updates"
+                        value="Yes"
+                      /><span>Yes</span></label
+                    >
+                    <label class="radio-item"
+                      ><input
+                        type="radio"
+                        name="receive_updates"
+                        value="No"
+                      /><span>No</span></label
+                    >
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label>Would you like to join our community?</label>
+                  <div class="radio-group" style="margin-top: 0.5rem">
+                    <label class="radio-item"
+                      ><input
+                        type="radio"
+                        name="join_community"
+                        value="Yes"
+                      /><span>Yes</span></label
+                    >
+                    <label class="radio-item"
+                      ><input
+                        type="radio"
+                        name="join_community"
+                        value="No"
+                      /><span>No</span></label
+                    >
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- CONSENT -->
+            <div class="form-section">
+              <div class="form-section-title">✅ Consent</div>
+              <div class="form-group" style="gap: 0.7rem">
+                <label
+                  class="checkbox-item"
+                  style="align-items: flex-start; gap: 0.75rem"
+                >
+                  <input
+                    type="checkbox"
+                    name="consent_contact"
+                    required
+                    style="margin-top: 3px"
+                  />
+                  <span
+                    >I agree to be contacted by WageTech regarding my support
+                    and updates about the program.
+                    <span class="req">*</span></span
+                  >
+                </label>
+                <label
+                  class="checkbox-item"
+                  style="align-items: flex-start; gap: 0.75rem"
+                >
+                  <input
+                    type="checkbox"
+                    name="consent_data"
+                    required
+                    style="margin-top: 3px"
+                  />
+                  <span
+                    >I consent to WageTech securely storing and using my data to
+                    process my support and communicate with me.
+                    <span class="req">*</span></span
+                  >
+                </label>
+              </div>
+            </div>
+
+            <div class="form-footer">
+              <p>
+                Your information will be sent to
+                <strong
+                  ><a href="mailto:info@wagetech.africa"
+                    >info@wagetech.africa</a
+                  ></strong
+                >. Thank you for powering inclusive tech in Nigeria.
+              </p>
+              <button type="submit" class="btn-submit">Submit Support →</button>
+            </div>
+          </form>
+
+          <!-- Success message -->
+          <div class="form-success" id="supporter-success">
+            <div class="check-circle">✓</div>
+            <h3>Thank You for Your Support!</h3>
+            <p>
+              Your message has been received. WageTech's team will reach out
+              within <strong>3–5 business days</strong> with next steps.
+              Together, we're building a more inclusive digital future.
+            </p>
+            <button
+              class="btn-primary"
+              onclick="closeModal('supporter-modal')"
+              style="margin-top: 0.5rem"
+            >
+              Close
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
     <script>
       const hamburger = document.getElementById("hamburger");
       const mobileMenu = document.getElementById("mobile-menu");
@@ -589,6 +1388,145 @@
           document.body.style.overflow = "";
         }
       });
+
+      /* ── Modal open / close ── */
+      function openModal(id) {
+        const overlay = document.getElementById(id);
+        if (!overlay) return;
+        overlay.classList.add("open");
+        document.body.style.overflow = "hidden";
+        const form = overlay.querySelector("form");
+        const success = overlay.querySelector(".form-success");
+        if (form) form.style.display = "block";
+        if (success) success.style.display = "none";
+      }
+
+      function closeModal(id) {
+        const overlay = document.getElementById(id);
+        if (!overlay) return;
+        overlay.classList.remove("open");
+        document.body.style.overflow = "";
+      }
+
+      /* Close on backdrop click */
+      document.querySelectorAll(".modal-overlay").forEach((overlay) => {
+        overlay.addEventListener("click", (e) => {
+          if (e.target === overlay) closeModal(overlay.id);
+        });
+      });
+
+      /* Close on Escape */
+      document.addEventListener("keydown", (e) => {
+        if (e.key === "Escape")
+          document
+            .querySelectorAll(".modal-overlay.open")
+            .forEach((o) => closeModal(o.id));
+      });
+
+      /* ── Form submission → mailto ── */
+      function handleSubmit(event, type) {
+        event.preventDefault();
+        const form = event.target;
+        const data = new FormData(form);
+
+        /* collect multi-checkboxes */
+        const groups = {};
+        form
+          .querySelectorAll('input[type="checkbox"]:not([name^="consent"])')
+          .forEach((cb) => {
+            if (cb.checked) {
+              if (!groups[cb.name]) groups[cb.name] = [];
+              groups[cb.name].push(cb.value);
+            }
+          });
+
+        let subject, body;
+
+        if (type === "partner") {
+          subject = `WageTech Partner Application — ${data.get("org_name") || "New Applicant"}`;
+          body = [
+            "WAGETECH PARTNER APPLICATION",
+            "Received via website form",
+            "═══════════════════════════════",
+            "",
+            "ORGANIZATION DETAILS",
+            `Organization Name: ${data.get("org_name") || "—"}`,
+            `Industry: ${data.get("industry") || "—"}`,
+            `Organization Size: ${data.get("org_size") || "—"}`,
+            `Location: ${data.get("location") || "—"}`,
+            `Website / LinkedIn: ${data.get("website") || "—"}`,
+            "",
+            "CONTACT PERSON",
+            `Full Name: ${data.get("contact_name") || "—"}`,
+            `Role: ${data.get("contact_role") || "—"}`,
+            `Email: ${data.get("contact_email") || "—"}`,
+            `Phone: ${data.get("contact_phone") || "—"}`,
+            "",
+            "PARTNERSHIP TYPE",
+            `Types Selected: ${(groups["partner_type"] || []).join(", ") || "—"}`,
+            "",
+            "COMMITMENT",
+            `Roles / Opportunities: ${data.get("num_roles") || "—"}`,
+            `Mentees to Support: ${data.get("num_mentees") || "—"}`,
+            `Funding Level: ${data.get("funding_level") || "—"}`,
+            `Duration: ${data.get("duration") || "—"}`,
+            "",
+            "ALIGNMENT",
+            `Why WageTech: ${data.get("why_wagetech") || "—"}`,
+            `Target Groups: ${(groups["target_group"] || []).join(", ") || "—"}`,
+            "",
+            "ADDITIONAL",
+            `How They Heard: ${data.get("heard_from") || "—"}`,
+            `Has Proposal: ${data.get("has_proposal") || "—"}`,
+            "",
+            "Consent given: Yes",
+          ].join("\n");
+        } else {
+          subject = `WageTech Support Application — ${data.get("full_name") || "New Supporter"}`;
+          body = [
+            "WAGETECH SUPPORTER APPLICATION",
+            "Received via website form",
+            "═══════════════════════════════",
+            "",
+            "PERSONAL INFORMATION",
+            `Full Name: ${data.get("full_name") || "—"}`,
+            `Email: ${data.get("email") || "—"}`,
+            `Phone: ${data.get("phone") || "—"}`,
+            `Country: ${data.get("country") || "—"}`,
+            "",
+            "SUPPORT TYPE",
+            `How they want to support: ${(groups["support_type"] || []).join(", ") || "—"}`,
+            "",
+            "CONTRIBUTION",
+            `Amount: ${data.get("amount") || "—"}`,
+            `Frequency: ${data.get("frequency") || "—"}`,
+            `Payment Method: ${data.get("payment_method") || "—"}`,
+            "",
+            "AREAS OF INTEREST",
+            `${(groups["interest_area"] || []).join(", ") || "—"}`,
+            "",
+            "MESSAGE",
+            `Why supporting WageTech: ${data.get("message") || "—"}`,
+            "",
+            "ENGAGEMENT",
+            `Receive Updates: ${data.get("receive_updates") || "—"}`,
+            `Join Community: ${data.get("join_community") || "—"}`,
+            "",
+            "Consent to contact: Yes",
+            "Consent to data use: Yes",
+          ].join("\n");
+        }
+
+        window.location.href = `mailto:info@wagetech.africa?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+
+        setTimeout(() => {
+          form.style.display = "none";
+          const successEl = document.getElementById(
+            type === "partner" ? "partner-success" : "supporter-success",
+          );
+          if (successEl) successEl.style.display = "flex";
+        }, 600);
+      }
     </script>
   </body>
 </html>
