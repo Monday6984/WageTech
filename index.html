@@ -594,7 +594,12 @@
         </div>
 
         <div class="modal-body">
-          <form id="partner-form" onsubmit="handleSubmit(event, 'partner')">
+          <form
+            id="partner-form"
+            action="https://formspree.io/f/xeepblrg"
+            method="POST"
+            onsubmit="handleSubmit(event, 'partner')"
+          >
             <!-- ORGANISATION DETAILS -->
             <div class="form-section">
               <div class="form-section-title">🏢 Organization Details</div>
@@ -1028,7 +1033,12 @@
         </div>
 
         <div class="modal-body">
-          <form id="supporter-form" onsubmit="handleSubmit(event, 'supporter')">
+          <form
+            id="supporter-form"
+            action="https://formspree.io/f/xqegvdwk"
+            method="POST"
+            onsubmit="handleSubmit(event, 'supporter')"
+          >
             <!-- PERSONAL INFO -->
             <div class="form-section">
               <div class="form-section-title">👤 Personal Information</div>
@@ -1540,8 +1550,7 @@
         const form = event.target;
         const data = new FormData(form);
         const submitBtn = form.querySelector(".btn-submit");
-        const endpoint =
-          type === "partner" ? FORMSPREE_PARTNER : FORMSPREE_SUPPORTER;
+        const endpoint = form.action;
 
         /* Collect multi-select checkboxes into readable strings */
         const groups = {};
