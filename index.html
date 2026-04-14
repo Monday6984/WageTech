@@ -455,7 +455,13 @@
               Start your journey into tech and financial independence. Apply for
               our training program and connect to real opportunities.
             </p>
-            <a href="mailto:info@wagetech.org" class="btn-primary"
+            <a
+              href="#"
+              class="btn-primary"
+              onclick="
+                event.preventDefault();
+                openModal('apply-modal');
+              "
               >Apply Now →</a
             >
           </div>
@@ -565,6 +571,489 @@
         </div>
       </div>
     </footer>
+
+    <!-- ═══════════════════════════════════════
+     APPLICANT FORM MODAL
+═══════════════════════════════════════ -->
+    <div
+      class="modal-overlay"
+      id="apply-modal"
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="apply-title"
+    >
+      <div class="modal">
+        <div class="modal-header">
+          <button
+            class="modal-close"
+            onclick="closeModal('apply-modal')"
+            aria-label="Close"
+          >
+            ✕
+          </button>
+          <div class="eyebrow">Programme Application</div>
+          <h2 id="apply-title">Start Your Journey in Tech</h2>
+          <p>
+            Apply for WageTech's training programme and take your first step
+            towards digital skills and financial independence.
+          </p>
+        </div>
+        <div class="modal-body">
+          <form
+            id="apply-form"
+            action="https://formspree.io/f/maqanykq"
+            method="POST"
+            onsubmit="handleSubmit(event, 'applicant')"
+          >
+            <!-- PERSONAL INFO -->
+            <div class="form-section">
+              <div class="form-section-title">👤 Personal Information</div>
+              <div class="form-row">
+                <div class="form-group">
+                  <label class="form-label"
+                    >Full Name <span class="req">*</span></label
+                  >
+                  <input
+                    class="form-input"
+                    type="text"
+                    name="full_name"
+                    placeholder="First and last name"
+                    required
+                  />
+                </div>
+                <div class="form-group">
+                  <label class="form-label"
+                    >Email Address <span class="req">*</span></label
+                  >
+                  <input
+                    class="form-input"
+                    type="email"
+                    name="email"
+                    placeholder="you@email.com"
+                    required
+                  />
+                </div>
+              </div>
+              <div class="form-row">
+                <div class="form-group">
+                  <label class="form-label"
+                    >Phone Number <span class="req">*</span></label
+                  >
+                  <input
+                    class="form-input"
+                    type="tel"
+                    name="phone"
+                    placeholder="+234 800 000 0000"
+                    required
+                  />
+                </div>
+                <div class="form-group">
+                  <label class="form-label"
+                    >Age Range <span class="req">*</span></label
+                  >
+                  <select class="form-select" name="age_range" required>
+                    <option value="" disabled selected>Select age range</option>
+                    <option>Under 18</option>
+                    <option>18–24</option>
+                    <option>25–30</option>
+                    <option>31–40</option>
+                    <option>41 and above</option>
+                  </select>
+                </div>
+              </div>
+              <div class="form-group">
+                <label class="form-label"
+                  >Location / Address <span class="req">*</span></label
+                >
+                <input
+                  class="form-input"
+                  type="text"
+                  name="location"
+                  placeholder="e.g. Ikeja, Lagos, Nigeria"
+                  required
+                />
+                <span class="hint">City and state is sufficient</span>
+              </div>
+            </div>
+
+            <!-- LEARNING TRACK -->
+            <div class="form-section">
+              <div class="form-section-title">🎓 Learning Track</div>
+              <div class="form-group">
+                <label class="form-label"
+                  >Which track would you like to join?
+                  <span class="req">*</span></label
+                >
+                <span class="hint"
+                  >Select your first choice — you can explore others later</span
+                >
+                <div class="checkbox-group" style="margin-top: 0.6rem">
+                  <label class="checkbox-item"
+                    ><input
+                      type="radio"
+                      name="learning_track"
+                      value="Digital Marketing"
+                      required
+                    /><span>📣 Digital Marketing</span></label
+                  >
+                  <label class="checkbox-item"
+                    ><input
+                      type="radio"
+                      name="learning_track"
+                      value="Data Analytics"
+                    /><span>📊 Data Analytics</span></label
+                  >
+                  <label class="checkbox-item"
+                    ><input
+                      type="radio"
+                      name="learning_track"
+                      value="UI/UX Design"
+                    /><span>🎨 UI/UX Design</span></label
+                  >
+                  <label class="checkbox-item"
+                    ><input
+                      type="radio"
+                      name="learning_track"
+                      value="Web Development"
+                    /><span>💻 Web Development</span></label
+                  >
+                  <label class="checkbox-item"
+                    ><input
+                      type="radio"
+                      name="learning_track"
+                      value="AI Skills for Everyday Work"
+                    /><span>🤖 AI Skills for Everyday Work</span></label
+                  >
+                  <label class="checkbox-item"
+                    ><input
+                      type="radio"
+                      name="learning_track"
+                      value="Career Readiness & Portfolio"
+                    /><span>🚀 Career Readiness &amp; Portfolio</span></label
+                  >
+                </div>
+              </div>
+              <div class="form-group" style="margin-top: 1rem">
+                <label class="form-label"
+                  >Do you have any prior experience in this track?</label
+                >
+                <div class="radio-group" style="margin-top: 0.4rem">
+                  <label class="radio-item"
+                    ><input
+                      type="radio"
+                      name="prior_experience"
+                      value="None — complete beginner"
+                    /><span>None — complete beginner</span></label
+                  >
+                  <label class="radio-item"
+                    ><input
+                      type="radio"
+                      name="prior_experience"
+                      value="Some — basic knowledge"
+                    /><span>Some — basic knowledge</span></label
+                  >
+                  <label class="radio-item"
+                    ><input
+                      type="radio"
+                      name="prior_experience"
+                      value="Intermediate"
+                    /><span>Intermediate</span></label
+                  >
+                </div>
+              </div>
+            </div>
+
+            <!-- BACKGROUND -->
+            <div class="form-section">
+              <div class="form-section-title">📋 Background</div>
+              <div class="form-row">
+                <div class="form-group">
+                  <label class="form-label"
+                    >Highest Education Level <span class="req">*</span></label
+                  >
+                  <select class="form-select" name="education" required>
+                    <option value="" disabled selected>Select level</option>
+                    <option>Primary school</option>
+                    <option>Secondary school / WAEC</option>
+                    <option>OND / NCE</option>
+                    <option>HND / BSc</option>
+                    <option>Postgraduate (MSc / PhD)</option>
+                    <option>Vocational / trade certification</option>
+                    <option>No formal education</option>
+                  </select>
+                </div>
+                <div class="form-group">
+                  <label class="form-label">Current Employment Status</label>
+                  <select class="form-select" name="employment_status">
+                    <option value="" disabled selected>Select status</option>
+                    <option>Unemployed — actively looking</option>
+                    <option>Unemployed — not currently looking</option>
+                    <option>Student</option>
+                    <option>Self-employed / freelancer</option>
+                    <option>Employed part-time</option>
+                    <option>Employed full-time</option>
+                    <option>Career returner</option>
+                  </select>
+                </div>
+              </div>
+              <div class="form-group">
+                <label class="form-label"
+                  >Do you have access to a smartphone or laptop?</label
+                >
+                <div class="radio-group" style="margin-top: 0.4rem">
+                  <label class="radio-item"
+                    ><input
+                      type="radio"
+                      name="device_access"
+                      value="Yes — smartphone"
+                    /><span>Yes — smartphone</span></label
+                  >
+                  <label class="radio-item"
+                    ><input
+                      type="radio"
+                      name="device_access"
+                      value="Yes — laptop/computer"
+                    /><span>Yes — laptop / computer</span></label
+                  >
+                  <label class="radio-item"
+                    ><input
+                      type="radio"
+                      name="device_access"
+                      value="Both"
+                    /><span>Both</span></label
+                  >
+                  <label class="radio-item"
+                    ><input type="radio" name="device_access" value="No" /><span
+                      >No</span
+                    ></label
+                  >
+                </div>
+              </div>
+              <div class="form-group">
+                <label class="form-label"
+                  >Do you have reliable internet access?</label
+                >
+                <div class="radio-group" style="margin-top: 0.4rem">
+                  <label class="radio-item"
+                    ><input
+                      type="radio"
+                      name="internet_access"
+                      value="Yes — stable"
+                    /><span>Yes — stable</span></label
+                  >
+                  <label class="radio-item"
+                    ><input
+                      type="radio"
+                      name="internet_access"
+                      value="Sometimes — intermittent"
+                    /><span>Sometimes — intermittent</span></label
+                  >
+                  <label class="radio-item"
+                    ><input
+                      type="radio"
+                      name="internet_access"
+                      value="No"
+                    /><span>No</span></label
+                  >
+                </div>
+              </div>
+            </div>
+
+            <!-- MOTIVATION -->
+            <div class="form-section">
+              <div class="form-section-title">💬 Motivation</div>
+              <div class="form-group">
+                <label class="form-label"
+                  >Why do you want to join WageTech?
+                  <span class="req">*</span></label
+                >
+                <textarea
+                  class="form-textarea"
+                  name="motivation"
+                  placeholder="Tell us what drives you and what you hope to achieve..."
+                  required
+                ></textarea>
+              </div>
+              <div class="form-group">
+                <label class="form-label"
+                  >What is your goal after completing the programme?</label
+                >
+                <select class="form-select" name="post_programme_goal">
+                  <option value="" disabled selected>Select your goal</option>
+                  <option>Get a full-time job in tech</option>
+                  <option>Freelance / work remotely</option>
+                  <option>Start my own business</option>
+                  <option>Upgrade skills for my current job</option>
+                  <option>Not sure yet — exploring options</option>
+                </select>
+              </div>
+            </div>
+
+            <!-- INCLUSION -->
+            <div class="form-section">
+              <div class="form-section-title">
+                🤝 Inclusion &amp; Accessibility
+              </div>
+              <div class="form-group">
+                <label class="form-label"
+                  >Do you identify with any of the following groups?</label
+                >
+                <span class="hint"
+                  >This helps us ensure we reach those who need support most.
+                  Select all that apply.</span
+                >
+                <div class="checkbox-group" style="margin-top: 0.6rem">
+                  <label class="checkbox-item"
+                    ><input
+                      type="checkbox"
+                      name="inclusion_group"
+                      value="Low-income community"
+                    /><span>From a low-income community</span></label
+                  >
+                  <label class="checkbox-item"
+                    ><input
+                      type="checkbox"
+                      name="inclusion_group"
+                      value="Rural or peri-urban"
+                    /><span>Based in a rural or peri-urban area</span></label
+                  >
+                  <label class="checkbox-item"
+                    ><input
+                      type="checkbox"
+                      name="inclusion_group"
+                      value="Person with a disability"
+                    /><span>Person with a disability</span></label
+                  >
+                  <label class="checkbox-item"
+                    ><input
+                      type="checkbox"
+                      name="inclusion_group"
+                      value="Displaced or marginalized"
+                    /><span>Displaced or marginalized woman</span></label
+                  >
+                  <label class="checkbox-item"
+                    ><input
+                      type="checkbox"
+                      name="inclusion_group"
+                      value="Career returner"
+                    /><span
+                      >Career returner (returning after a break)</span
+                    ></label
+                  >
+                  <label class="checkbox-item"
+                    ><input
+                      type="checkbox"
+                      name="inclusion_group"
+                      value="None of the above"
+                    /><span>None of the above</span></label
+                  >
+                </div>
+              </div>
+              <div class="form-group">
+                <label class="form-label"
+                  >Do you require any special accommodations?</label
+                >
+                <textarea
+                  class="form-textarea"
+                  name="accommodations"
+                  placeholder="e.g. screen reader support, sign language, flexible timing..."
+                  style="min-height: 70px"
+                ></textarea>
+                <span class="hint">Leave blank if not applicable</span>
+              </div>
+            </div>
+
+            <!-- HOW THEY HEARD -->
+            <div class="form-section">
+              <div class="form-section-title">
+                📣 How Did You Hear About Us?
+              </div>
+              <div class="form-group">
+                <select class="form-select" name="heard_from">
+                  <option value="" disabled selected>Select source</option>
+                  <option>Social Media (Instagram)</option>
+                  <option>Social Media (LinkedIn)</option>
+                  <option>Social Media (Twitter/X)</option>
+                  <option>WhatsApp / Telegram</option>
+                  <option>Friend or family referral</option>
+                  <option>Google / Search</option>
+                  <option>Event or community programme</option>
+                  <option>News / Media</option>
+                  <option>Other</option>
+                </select>
+              </div>
+            </div>
+
+            <!-- CONSENT -->
+            <div class="form-section">
+              <div class="form-section-title">✅ Consent</div>
+              <div class="form-group" style="gap: 0.7rem">
+                <label
+                  class="checkbox-item"
+                  style="align-items: flex-start; gap: 0.75rem"
+                >
+                  <input
+                    type="checkbox"
+                    name="consent_contact"
+                    required
+                    style="margin-top: 3px"
+                  />
+                  <span
+                    >I agree to be contacted by WageTech regarding my
+                    application and programme updates.
+                    <span class="req">*</span></span
+                  >
+                </label>
+                <label
+                  class="checkbox-item"
+                  style="align-items: flex-start; gap: 0.75rem"
+                >
+                  <input
+                    type="checkbox"
+                    name="consent_data"
+                    required
+                    style="margin-top: 3px"
+                  />
+                  <span
+                    >I consent to WageTech securely storing and using my data to
+                    process my application. <span class="req">*</span></span
+                  >
+                </label>
+              </div>
+            </div>
+
+            <div class="form-footer">
+              <p>
+                Submitted to <strong>info@wagetech.africa</strong>. We'll review
+                your application and be in touch within
+                <strong>5 business days</strong>.
+              </p>
+              <button type="submit" class="btn-submit">
+                Submit Application →
+              </button>
+            </div>
+          </form>
+
+          <!-- Success message -->
+          <div class="form-success" id="apply-success">
+            <div class="check-circle">✓</div>
+            <h3>Application Submitted!</h3>
+            <p>
+              Thank you for applying to WageTech. We've received your
+              application and will be in touch within
+              <strong>5 business days</strong>. Your journey starts here! 🚀
+            </p>
+            <button
+              class="btn-primary"
+              onclick="closeModal('apply-modal')"
+              style="margin-top: 0.5rem"
+            >
+              Close
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
 
     <!-- ═══════════════════════════════════════
      PARTNER FORM MODAL
@@ -1430,119 +1919,12 @@
             .forEach((o) => closeModal(o.id));
       });
 
-      // /* ── Form submission → mailto ── */
-      // function handleSubmit(event, type) {
-      //   event.preventDefault();
-      //   const form = event.target;
-      //   const data = new FormData(form);
-
-      //   /* collect multi-checkboxes */
-      //   const groups = {};
-      //   form
-      //     .querySelectorAll('input[type="checkbox"]:not([name^="consent"])')
-      //     .forEach((cb) => {
-      //       if (cb.checked) {
-      //         if (!groups[cb.name]) groups[cb.name] = [];
-      //         groups[cb.name].push(cb.value);
-      //       }
-      //     });
-
-      //   let subject, body;
-
-      //   if (type === "partner") {
-      //     subject = `WageTech Partner Application — ${data.get("org_name") || "New Applicant"}`;
-      //     body = [
-      //       "WAGETECH PARTNER APPLICATION",
-      //       "Received via website form",
-      //       "═══════════════════════════════",
-      //       "",
-      //       "ORGANIZATION DETAILS",
-      //       `Organization Name: ${data.get("org_name") || "—"}`,
-      //       `Industry: ${data.get("industry") || "—"}`,
-      //       `Organization Size: ${data.get("org_size") || "—"}`,
-      //       `Location: ${data.get("location") || "—"}`,
-      //       `Website / LinkedIn: ${data.get("website") || "—"}`,
-      //       "",
-      //       "CONTACT PERSON",
-      //       `Full Name: ${data.get("contact_name") || "—"}`,
-      //       `Role: ${data.get("contact_role") || "—"}`,
-      //       `Email: ${data.get("contact_email") || "—"}`,
-      //       `Phone: ${data.get("contact_phone") || "—"}`,
-      //       "",
-      //       "PARTNERSHIP TYPE",
-      //       `Types Selected: ${(groups["partner_type"] || []).join(", ") || "—"}`,
-      //       "",
-      //       "COMMITMENT",
-      //       `Roles / Opportunities: ${data.get("num_roles") || "—"}`,
-      //       `Mentees to Support: ${data.get("num_mentees") || "—"}`,
-      //       `Funding Level: ${data.get("funding_level") || "—"}`,
-      //       `Duration: ${data.get("duration") || "—"}`,
-      //       "",
-      //       "ALIGNMENT",
-      //       `Why WageTech: ${data.get("why_wagetech") || "—"}`,
-      //       `Target Groups: ${(groups["target_group"] || []).join(", ") || "—"}`,
-      //       "",
-      //       "ADDITIONAL",
-      //       `How They Heard: ${data.get("heard_from") || "—"}`,
-      //       `Has Proposal: ${data.get("has_proposal") || "—"}`,
-      //       "",
-      //       "Consent given: Yes",
-      //     ].join("\n");
-      //   } else {
-      //     subject = `WageTech Support Application — ${data.get("full_name") || "New Supporter"}`;
-      //     body = [
-      //       "WAGETECH SUPPORTER APPLICATION",
-      //       "Received via website form",
-      //       "═══════════════════════════════",
-      //       "",
-      //       "PERSONAL INFORMATION",
-      //       `Full Name: ${data.get("full_name") || "—"}`,
-      //       `Email: ${data.get("email") || "—"}`,
-      //       `Phone: ${data.get("phone") || "—"}`,
-      //       `Country: ${data.get("country") || "—"}`,
-      //       "",
-      //       "SUPPORT TYPE",
-      //       `How they want to support: ${(groups["support_type"] || []).join(", ") || "—"}`,
-      //       "",
-      //       "CONTRIBUTION",
-      //       `Amount: ${data.get("amount") || "—"}`,
-      //       `Frequency: ${data.get("frequency") || "—"}`,
-      //       `Payment Method: ${data.get("payment_method") || "—"}`,
-      //       "",
-      //       "AREAS OF INTEREST",
-      //       `${(groups["interest_area"] || []).join(", ") || "—"}`,
-      //       "",
-      //       "MESSAGE",
-      //       `Why supporting WageTech: ${data.get("message") || "—"}`,
-      //       "",
-      //       "ENGAGEMENT",
-      //       `Receive Updates: ${data.get("receive_updates") || "—"}`,
-      //       `Join Community: ${data.get("join_community") || "—"}`,
-      //       "",
-      //       "Consent to contact: Yes",
-      //       "Consent to data use: Yes",
-      //     ].join("\n");
-      //   }
-
-      //   window.location.href = `mailto:info@wagetech.africa?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
-
-      //   setTimeout(() => {
-      //     form.style.display = "none";
-      //     const successEl = document.getElementById(
-      //       type === "partner" ? "partner-success" : "supporter-success",
-      //     );
-      //     if (successEl) successEl.style.display = "flex";
-      //   }, 600);
-      // }
-
       /* ────────────────────────────────────────────
      FORMSPREE ENDPOINTS
      1. Go to https://formspree.io and sign up free
      2. Create two forms, copy each endpoint URL
      3. Paste them below replacing the placeholder text
   ──────────────────────────────────────────── */
-      const FORMSPREE_PARTNER = "https://formspree.io/f/xeepblrg";
-      const FORMSPREE_SUPPORTER = "https://formspree.io/f/xqegvdwk";
 
       /* ── Form submission → Formspree ── */
       async function handleSubmit(event, type) {
@@ -1569,7 +1951,12 @@
         });
 
         /* Add a human-readable subject line for the email Formspree sends */
-        if (type === "partner") {
+        if (type === "applicant") {
+          data.set(
+            "_subject",
+            `WageTech Programme Application — ${data.get("full_name") || "New Applicant"} | ${data.get("learning_track") || "Track TBC"}`,
+          );
+        } else if (type === "partner") {
           data.set(
             "_subject",
             `WageTech Partner Application — ${data.get("org_name") || "New Applicant"}`,
@@ -1597,7 +1984,11 @@
             /* Show success screen */
             form.style.display = "none";
             const successId =
-              type === "partner" ? "partner-success" : "supporter-success";
+              type === "applicant"
+                ? "apply-success"
+                : type === "partner"
+                  ? "partner-success"
+                  : "supporter-success";
             const successEl = document.getElementById(successId);
             if (successEl) successEl.style.display = "flex";
           } else {
